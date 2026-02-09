@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Guide | Advaith Banigandlapati</title>
+    <meta name="description" content="Essential cybersecurity techniques from CyberPatriot competition experience.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%230ea5e9;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%2306b6d4;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='20' fill='url(%23grad)'/%3E%3Ctext x='50' y='70' font-family='system-ui' font-size='50' font-weight='700' text-anchor='middle' fill='white'%3EAB%3C/text%3E%3C/svg%3E">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <canvas id="background-canvas"></canvas>
+    
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-bracket">&lt;</span>
+                <span class="logo-text">ADVAITH</span>
+                <span class="logo-bracket">&gt;</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html#home" class="nav-link">Home</a></li>
+                <li><a href="index.html#projects" class="nav-link">Projects</a></li>
+                <li><a href="index.html#skills" class="nav-link">Skills</a></li>
+                <li><a href="index.html#journey" class="nav-link">Journey</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+                <li><a href="security-guide.html" class="nav-link nav-link-accent active">Security Guide</a></li>
+            </ul>
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="5"/>
+                    <line x1="12" y1="1" x2="12" y2="3"/>
+                    <line x1="12" y1="21" x2="12" y2="23"/>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                    <line x1="1" y1="12" x2="3" y2="12"/>
+                    <line x1="21" y1="12" x2="23" y2="12"/>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                </svg>
+                <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                </svg>
+            </button>
+            <button class="mobile-menu-toggle" id="mobile-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <section class="page-hero">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="9 18 15 12 9 6"/>
+                </svg>
+                <span>Security Guide</span>
+            </div>
+            <h1 class="page-title">
+                <span class="gradient-text">Cybersecurity</span> Essentials
+            </h1>
+            <p class="page-subtitle">
+                Essential security techniques from CyberPatriot competition experience. Learn to protect your systems 
+                using the same strategies that earned 3rd place in New Jersey.
+            </p>
+            <div class="page-meta">
+                <div class="meta-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                    <span>45 minute read</span>
+                </div>
+                <div class="meta-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                        <circle cx="8.5" cy="7" r="4"/>
+                        <polyline points="17 11 19 13 23 9"/>
+                    </svg>
+                    <span>Beginner Friendly</span>
+                </div>
+                <div class="meta-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                        <line x1="8" y1="21" x2="16" y2="21"/>
+                        <line x1="12" y1="17" x2="12" y2="21"/>
+                    </svg>
+                    <span>Windows, Linux & macOS</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="guide-nav">
+        <div class="container">
+            <div class="guide-nav-content">
+                <h3>Quick Navigation</h3>
+                <div class="guide-links">
+                    <a href="#bitlocker">BitLocker Encryption</a>
+                    <a href="#audit-logs">Audit Logs</a>
+                    <a href="#password-policy">Password Policies</a>
+                    <a href="#firewall">Firewall Configuration</a>
+                    <a href="#user-management">User Management</a>
+                    <a href="#checklist">Security Checklist</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="guide-content">
+        <div class="container-narrow">
+            <section id="bitlocker" class="guide-section">
+                <div class="section-number">01</div>
+                <div class="section-header-guide">
+                    <div class="section-icon-guide">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <span class="difficulty-badge beginner">Beginner</span>
+                        <h2>BitLocker Drive Encryption</h2>
+                        <p class="section-intro">Protect your data from physical theft and unauthorized access</p>
+                    </div>
+                </div>
+
+                <div class="guide-block">
+                    <h3>What is BitLocker?</h3>
+                    <p>
+                        BitLocker is a full-disk encryption feature included with Windows that protects your data by encrypting entire drives. 
+                        Even if someone physically steals your hard drive, they cannot access your data without the encryption key.
+                    </p>
+                </div>
+
+                <div class="guide-block">
+                    <h3>Why Use BitLocker?</h3>
+                    <ul class="check-list">
+                        <li>Protects against data theft from lost or stolen devices</li>
+                        <li>Prevents unauthorized access to sensitive files</li>
+                        <li>Required for many security compliance standards</li>
+                        <li>Transparent to users once configured</li>
+                    </ul>
+                </div>
+
+                <div class="guide-block">
+                    <h3>Requirements</h3>
+                    <div class="info-box">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="12" y1="16" x2="12" y2="12"/>
+                            <line x1="12" y1="8" x2="12.01" y2="8"/>
+                        </svg>
+                        <div>
+                            <p><strong>Windows Editions:</strong> Windows 10/11 Pro, Enterprise, or Education</p>
+                            <p><strong>Hardware:</strong> TPM (Trusted Platform Module) 1.2 or higher (recommended)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="guide-block">
+                    <h3>Step-by-Step Guide</h3>
+                    
+                    <div class="step-block">
+                        <div class="step-number">Step 1</div>
+                        <h4>Check TPM Status</h4>
+                        <div class="code-block">
+                            <div class="code-header">
+                                <span>PowerShell (Admin)</span>
+                                <button class="copy-btn" data-copy="Get-Tpm">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <pre><code>Get-Tpm</code></pre>
+                        </div>
+                        <p>Verify that TPM is present and ready. Look for "TpmPresent: True" and "TpmReady: True"</p>
+                    </div>
+
+                    <div class="step-block">
+                        <div class="step-number">Step 2</div>
+                        <h4>Open BitLocker Settings</h4>
+                        <p>Navigate to Control Panel → System and Security → BitLocker Drive Encryption</p>
+                        <p>Or search for "BitLocker" in Windows Search</p>
+                    </div>
+
+                    <div class="step-block">
+                        <div class="step-number">Step 3</div>
+                        <h4>Enable BitLocker</h4>
+                        <ol class="numbered-list">
+                            <li>Click "Turn on BitLocker" next to your system drive (usually C:)</li>
+                            <li>Wait for the initialization to complete</li>
+                            <li>Choose how to unlock your drive at startup (TPM recommended)</li>
+                            <li>Save your recovery key in a safe location (critical!)</li>
+                            <li>Choose encryption mode (encrypt used space only for faster setup)</li>
+                            <li>Run the BitLocker system check</li>
+                            <li>Restart your computer to begin encryption</li>
+                        </ol>
+                    </div>
+
+                    <div class="step-block">
+                        <div class="step-number">Step 4</div>
+                        <h4>Verify Encryption</h4>
+                        <div class="code-block">
+                            <div class="code-header">
+                                <span>PowerShell (Admin)</span>
+                                <button class="copy-btn" data-copy="Get-BitLockerVolume">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <pre><code>Get-BitLockerVolume</code></pre>
+                        </div>
+                        <p>Check that "ProtectionStatus" shows "On" and "EncryptionPercentage" shows 100</p>
+                    </div>
+                </div>
+
+                <div class="warning-box">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                        <line x1="12" y1="9" x2="12" y2="13"/>
+                        <line x1="12" y1="17" x2="12.01" y2="17"/>
+                    </svg>
+                    <div>
+                        <h4>Critical: Save Your Recovery Key!</h4>
+                        <p>
+                            Store your recovery key in multiple secure locations. If you lose access to your account and don't have 
+                            the recovery key, your data will be permanently inaccessible. Print it, save it to a USB drive (stored separately), 
+                            or save it to your Microsoft account.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="audit-logs" class="guide-section">
+                <div class="section-number">02</div>
+                <div class="section-header-guide">
+                    <div class="section-icon-guide">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                            <line x1="16" y1="13" x2="8" y2="13"/>
+                            <line x1="16" y1="17" x2="8" y2="17"/>
+                            <polyline points="10 9 9 9 8 9"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <span class="difficulty-badge intermediate">Intermediate</span>
+                        <h2>Audit Logging & Monitoring</h2>
+                        <p class="section-intro">Monitor and track security-relevant events on your system</p>
+                    </div>
+                </div>
+
+                <div class="guide-block">
+                    <h3>What are Audit Logs?</h3>
+                    <p>
+                        Audit logs record security-related events on your system, such as login attempts, file access, 
+                        permission changes, and system modifications. They are essential for detecting unauthorized access 
+                        and investigating security incidents.
+                    </p>
+                </div>
+
+                <div class="guide-block">
+                    <h3>Critical Events to Monitor</h3>
+                    <ul class="check-list">
+                        <li>Failed login attempts (potential brute force attacks)</li>
+                        <li>Account lockouts and password changes</li>
+                        <li>Privilege escalation attempts</li>
+                        <li>Changes to audit policies</li>
+                        <li>System startup and shutdown</li>
+                        <li>Installation of new software or services</li>
+                    </ul>
+                </div>
+
+                <div class="guide-block">
+                    <h3>Enable Advanced Audit Policies (Windows)</h3>
+                    
+                    <div class="step-block">
+                        <div class="step-number">Step 1</div>
+                        <h4>Open Local Security Policy</h4>
+                        <p>Press Win + R, type <code class="inline-code">secpol.msc</code>, and press Enter</p>
+                    </div>
+
+                    <div class="step-block">
+                        <div class="step-number">Step 2</div>
+                        <h4>Navigate to Audit Policies</h4>
+                        <p>Security Settings → Advanced Audit Policy Configuration → Audit Policies</p>
+                    </div>
+
+                    <div class="step-block">
+                        <div class="step-number">Step 3</div>
+                        <h4>Enable Key Audit Categories</h4>
+                        <p>For each category below, double-click and enable both Success and Failure auditing:</p>
+                        <ul class="numbered-list">
+                            <li><strong>Account Logon:</strong> Audit Credential Validation</li>
+                            <li><strong>Account Management:</strong> Audit User Account Management, Audit Security Group Management</li>
+                            <li><strong>Logon/Logoff:</strong> Audit Logon, Audit Logoff, Audit Account Lockout</li>
+                            <li><strong>Policy Change:</strong> Audit Audit Policy Change</li>
+                            <li><strong>Privilege Use:</strong> Audit Sensitive Privilege Use</li>
+                            <li><strong>System:</strong> Audit Security State Change, Audit System Integrity</li>
+                        </ul>
+                    </div>
+
+                    <div class="step-block">
+                        <div class="step-number">Step 4</div>
+                        <h4>View Audit Logs</h4>
+                        <p>Open Event Viewer (Win + R → <code class="inline-code">eventvwr.msc</code>)</p>
+                        <p>Navigate to Windows Logs → Security</p>
+                    </div>
+                </div>
+
+                <div class="guide-block">
+                    <h3>Common Event IDs to Watch</h3>
+                    <div class="table-responsive">
+                        <table class="guide-table">
+                            <thead>
+                                <tr>
+                                    <th>Event ID</th>
+                                    <th>Description</th>
+                                    <th>Severity</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>4624</code></td>
+                                    <td>Successful account logon</td>
+                                    <td><span class="badge badge-info">Info</span></td>
+                                </tr>
+                                <tr>
+                                    <td><code>4625</code></td>
+                                    <td>Failed logon attempt</td>
+                                    <td><span class="badge badge-warning">Warning</span></td>
+                                </tr>
+                                <tr>
+                                    <td><code>4648</code></td>
+                                    <td>Logon using explicit credentials</td>
+                                    <td><span class="badge badge-info">Info</span></td>
+                                </tr>
+                                <tr>
+                                    <td><code>4720</code></td>
+                                    <td>User account created</td>
+                                    <td><span class="badge badge-warning">Warning</span></td>
+                                </tr>
+                                <tr>
+                                    <td><code>4726</code></td>
+                                    <td>User account deleted</td>
+                                    <td><span class="badge badge-critical">Critical</span></td>
+                                </tr>
+                                <tr>
+                                    <td><code>4732</code></td>
+                                    <td>Member added to security group</td>
+                                    <td><span class="badge badge-warning">Warning</span></td>
+                                </tr>
+                                <tr>
+                                    <td><code>4740</code></td>
+                                    <td>User account locked out</td>
+                                    <td><span class="badge badge-critical">Critical</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="12" y1="16" x2="12" y2="12"/>
+                        <line x1="12" y1="8" x2="12.01" y2="8"/>
+                    </svg>
+                    <div>
+                        <h4>Pro Tip: Regular Log Review</h4>
+                        <p>
+                            Review your security logs weekly. Look for patterns of failed logins, unusual account activity, 
+                            or unexpected privilege changes. Set up log retention for at least 90 days.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="password-policy" class="guide-section">
+                <div class="section-number">03</div>
+                <div class="section-header-guide">
+                    <div class="section-icon-guide">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <span class="difficulty-badge beginner">Beginner</span>
+                        <h2>Password Policy Configuration</h2>
+                        <p class="section-intro">Enforce strong password requirements across your system</p>
+                    </div>
+                </div>
+
+                <div class="guide-block">
+                    <h3>Why Password Policies Matter</h3>
+                    <p>
+                        Weak passwords are one of the most common security vulnerabilities. A strong password policy ensures 
+                        that all user accounts have passwords that resist brute-force attacks and dictionary attacks.
+                    </p>
+                </div>
+
+                <div class="guide-block">
+                    <h3>Recommended Password Requirements</h3>
+                    <ul class="check-list">
+                        <li>Minimum length: 12 characters (14+ for administrator accounts)</li>
+                        <li>Must contain uppercase and lowercase letters</li>
+                        <li>Must contain numbers</li>
+                        <li>Must contain special characters (!@#$%^&*)</li>
+                        <li>Cannot contain username or common words</li>
+                        <li>Password history: Remember last 24 passwords</li>
+                        <li>Maximum password age: 90 days</li>
+                        <li>Minimum password age: 1 day</li>
+                        <li>Account lockout after 5 failed attempts</li>
+                    </ul>
+                </div>
+
+                <div class="guide-block">
+                    <h3>Configure Password Policy (Windows)</h3>
+                    
+                    <div class="step-block">
+                        <div class="step-number">Step 1</div>
+                        <h4>Open Local Security Policy</h4>
+                        <div class="code-block">
+                            <div class="code-header">
+                                <span>Run Command</span>
+                            </div>
+                            <pre><code>secpol.msc</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="step-block">
+                        <div class="step-number">Step 2</div>
+                        <h4>Navigate to Password Policy</h4>
+                        <p>Security Settings → Account Policies → Password Policy</p>
+                    </div>
+
+                    <div class="step-block">
+                        <div class="step-number">Step 3</div>
+                        <h4>Configure Each Setting</h4>
+                        <div class="settings-grid">
+                            <div class="setting-item">
+                                <strong>Enforce password history</strong>
+                                <span>24 passwords remembered</span>
+                            </div>
+                            <div class="setting-item">
+                                <strong>Maximum password age</strong>
+                                <span>90 days</span>
+                            </div>
+                            <div class="setting-item">
+                                <strong>Minimum password age</strong>
+                                <span>1 day</span>
+                            </div>
+                            <div class="setting-item">
+                                <strong>Minimum password length</strong>
+                                <span>12 characters</span>
+                            </div>
+                            <div class="setting-item">
+                                <strong>Password must meet complexity requirements</strong>
+                                <span>Enabled</span>
+                            </div>
+                            <div class="setting-item">
+                                <strong>Store passwords using reversible encryption</strong>
+                                <span>Disabled</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="step-block">
+                        <div class="step-number">Step 4</div>
+                        <h4>Configure Account Lockout Policy</h4>
+                        <p>Navigate to Account Policies → Account Lockout Policy</p>
+                        <div class="settings-grid">
+                            <div class="setting-item">
+                                <strong>Account lockout threshold</strong>
+                                <span>5 invalid attempts</span>
+                            </div>
+                            <div class="setting-item">
+                                <strong>Account lockout duration</strong>
+                                <span>30 minutes</span>
+                            </div>
+                            <div class="setting-item">
+                                <strong>Reset lockout counter after</strong>
+                                <span>30 minutes</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="guide-block">
+                    <h3>Creating Strong Passwords</h3>
+                    <div class="password-examples">
+                        <div class="password-example bad">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <line x1="15" y1="9" x2="9" y2="15"/>
+                                <line x1="9" y1="9" x2="15" y2="15"/>
+                            </svg>
+                            <div>
+                                <strong>Weak:</strong> password123, qwerty, admin2024
+                                <p>Too short, common words, predictable patterns</p>
+                            </div>
+                        </div>
+                        <div class="password-example good">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            <div>
+                                <strong>Strong:</strong> Tr0pic@lSt0rm#2026!, B1u3M00n$R15ing
+                                <p>12+ characters, mixed case, numbers, special characters</p>
+                            </div>
+                        </div>
+                        <div class="password-example good">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            <div>
+                                <strong>Passphrase:</strong> Correct-Horse-Battery-Staple-99!
+                                <p>Long, memorable, random words with modifications</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="warning-box">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                        <line x1="12" y1="9" x2="12" y2="13"/>
+                        <line x1="12" y1="17" x2="12.01" y2="17"/>
+                    </svg>
+                    <div>
+                        <h4>Never Reuse Passwords</h4>
+                        <p>
+                            Use unique passwords for every account. If one service is compromised, attackers will try those credentials 
+                            on other sites. Consider using a password manager to store unique passwords securely.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="firewall" class="guide-section">
+                <div class="section-number">04</div>
+                <div class="section-header-guide">
+                    <div class="section-icon-guide">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            <path d="M12 8v8M8 12h8"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <span class="difficulty-badge intermediate">Intermediate</span>
+                        <h2>Firewall Configuration</h2>
+                        <p class="section-intro">Control network traffic and protect against external threats</p>
+                    </div>
+                </div>
+
+                <div class="guide-block">
+                    <h3>What is a Firewall?</h3>
+                    <p>
+                        A firewall monitors and controls incoming and outgoing network traffic based on predetermined security rules. 
+                        It acts as a barrier between your trusted internal network and untrusted external networks.
+                    </p>
+                </div>
+
+                <div class="guide-block">
+                    <h3>Windows Firewall Configuration</h3>
+                    
+                    <div class="step-block">
+                        <div class="step-number">Step 1</div>
+                        <h4>Open Windows Defender Firewall</h4>
+                        <p>Control Panel → System and Security → Windows Defender Firewall</p>
+                        <p>Or search for "Firewall" in Windows Search</p>
+                    </div>
+
+                    <div class="step-block">
+                        <div class="step-number">Step 2</div>
+                        <h4>Enable Firewall for All Profiles</h4>
+                        <p>Click "Turn Windows Defender Firewall on or off" and ensure firewall is ON for:</p>
+                        <ul class="check-list">
+                            <li>Domain networks</li>
+                            <li>Private networks</li>
+                            <li>Public networks (most important!)</li>
+                        </ul>
+                    </div>
+
+                    <div class="step-block">
+                        <div class="step-number">Step 3</div>
+                        <h4>Configure Advanced Settings</h4>
+                        <p>Click "Advanced settings" to access Windows Defender Firewall with Advanced Security</p>
+                    </div>
+
+                    <div class="step-block">
+                        <div class="step-number">Step 4</div>
+                        <h4>Review Default Rules</h4>
+                        <p>Review Inbound Rules and Outbound Rules. Disable or remove any unnecessary rules for services you don't use.</p>
+                    </div>
+                </div>
+
+                <div class="guide-block">
+                    <h3>Creating Custom Firewall Rules</h3>
+                    <p>Example: Block a specific program from accessing the internet</p>
+                    <ol class="numbered-list">
+                        <li>Open Windows Defender Firewall with Advanced Security</li>
+                        <li>Right-click "Outbound Rules" → "New Rule"</li>
+                        <li>Select "Program" → Click "Next"</li>
+                        <li>Browse to the program's executable file</li>
+                        <li>Select "Block the connection"</li>
+                        <li>Apply to all profiles (Domain, Private, Public)</li>
+                        <li>Name the rule and add a description</li>
+                    </ol>
+                </div>
+
+                <div class="guide-block">
+                    <h3>Best Practices</h3>
+                    <ul class="check-list">
+                        <li>Enable firewall on all network profiles</li>
+                        <li>Block all inbound connections by default (whitelist approach)</li>
+                        <li>Only allow necessary outbound connections</li>
+                        <li>Disable unused network services and protocols</li>
+                        <li>Regularly review firewall logs for suspicious activity</li>
+                        <li>Use separate rules for different network zones</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="12" y1="16" x2="12" y2="12"/>
+                        <line x1="12" y1="8" x2="12.01" y2="8"/>
+                    </svg>
+                    <div>
+                        <h4>Testing Your Firewall</h4>
+                        <p>
+                            Use online tools like ShieldsUP! (grc.com) to test your firewall configuration. 
+                            A properly configured firewall should show all ports as "stealth" (appearing as if the computer doesn't exist).
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="user-management" class="guide-section">
+                <div class="section-number">05</div>
+                <div class="section-header-guide">
+                    <div class="section-icon-guide">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <span class="difficulty-badge intermediate">Intermediate</span>
+                        <h2>User Account Management</h2>
+                        <p class="section-intro">Control who has access to your system and what they can do</p>
+                    </div>
+                </div>
+
+                <div class="guide-block">
+                    <h3>Principle of Least Privilege</h3>
+                    <p>
+                        Users should only have the minimum permissions necessary to perform their tasks. This limits the damage 
+                        that can be done if an account is compromised.
+                    </p>
+                </div>
+
+                <div class="guide-block">
+                    <h3>Disable Unnecessary Accounts</h3>
+                    
+                    <div class="step-block">
+                        <div class="step-number">Step 1</div>
+                        <h4>Review All User Accounts</h4>
+                        <div class="code-block">
+                            <div class="code-header">
+                                <span>PowerShell (Admin)</span>
+                                <button class="copy-btn" data-copy="Get-LocalUser">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <pre><code>Get-LocalUser</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="step-block">
+                        <div class="step-number">Step 2</div>
+                        <h4>Disable Guest Account</h4>
+                        <div class="code-block">
+                            <div class="code-header">
+                                <span>PowerShell (Admin)</span>
+                                <button class="copy-btn" data-copy="Disable-LocalUser -Name &quot;Guest&quot;">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <pre><code>Disable-LocalUser -Name "Guest"</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="step-block">
+                        <div class="step-number">Step 3</div>
+                        <h4>Remove Unauthorized Users</h4>
+                        <p>Delete or disable any accounts that are:</p>
+                        <ul class="check-list">
+                            <li>No longer needed</li>
+                            <li>Created by malware</li>
+                            <li>Unknown or unauthorized</li>
+                            <li>Test or temporary accounts</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="guide-block">
+                    <h3>Secure Administrator Accounts</h3>
+                    <ul class="check-list">
+                        <li>Rename the default Administrator account</li>
+                        <li>Use a separate admin account for administrative tasks</li>
+                        <li>Use a standard user account for daily activities</li>
+                        <li>Enable User Account Control (UAC)</li>
+                        <li>Require strong passwords for all admin accounts</li>
+                        <li>Limit the number of administrators</li>
+                    </ul>
+                </div>
+
+                <div class="guide-block">
+                    <h3>Group Management</h3>
+                    <p>Properly assign users to security groups:</p>
+                    <div class="table-responsive">
+                        <table class="guide-table">
+                            <thead>
+                                <tr>
+                                    <th>Group</th>
+                                    <th>Purpose</th>
+                                    <th>Recommendation</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Administrators</strong></td>
+                                    <td>Full system control</td>
+                                    <td>Minimize membership, only IT staff</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Power Users</strong></td>
+                                    <td>Limited admin rights</td>
+                                    <td>Legacy group, avoid if possible</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Users</strong></td>
+                                    <td>Standard privileges</td>
+                                    <td>Default for all regular users</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Guests</strong></td>
+                                    <td>Minimal access</td>
+                                    <td>Disable guest account entirely</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="warning-box">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                        <line x1="12" y1="9" x2="12" y2="13"/>
+                        <line x1="12" y1="17" x2="12.01" y2="17"/>
+                    </svg>
+                    <div>
+                        <h4>Don't Use Admin for Daily Tasks</h4>
+                        <p>
+                            Using an administrator account for everyday activities (web browsing, email, etc.) puts your system at 
+                            greater risk. Malware running with admin privileges can cause significantly more damage. Always use a 
+                            standard user account for daily tasks.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="checklist" class="guide-section">
+                <div class="section-number">06</div>
+                <div class="section-header-guide">
+                    <div class="section-icon-guide">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9 11 12 14 22 4"/>
+                            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h2>Complete Security Checklist</h2>
+                        <p class="section-intro">Essential security tasks for comprehensive system protection</p>
+                    </div>
+                </div>
+
+                <div class="checklist-container">
+                    <div class="checklist-category">
+                        <h3>System Hardening</h3>
+                        <div class="checklist-items">
+                            <label class="checklist-item">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                <span class="checklist-text">Enable BitLocker drive encryption on all drives</span>
+                            </label>
+                            <label class="checklist-item">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                <span class="checklist-text">Enable Windows Defender/Security</span>
+                            </label>
+                            <label class="checklist-item">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                <span class="checklist-text">Enable automatic updates</span>
+                            </label>
+                            <label class="checklist-item">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                <span class="checklist-text">Disable autorun for removable media</span>
+                            </label>
+                            <label class="checklist-item">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                <span class="checklist-text">Enable screen lock after 5 minutes of inactivity</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="checklist-category">
+                        <h3>User Account Security</h3>
+                        <div class="checklist-items">
+                            <label class="checklist-item">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                <span class="checklist-text">Disable Guest account</span>
+                            </label>
+                            <label class="checklist-item">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                <span class="checklist-text">Remove unauthorized user accounts</span>
+                            </label>
+                            <label class="checklist-item">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                <span class="checklist-text">Rename default Administrator account</span>
+                            </label>
+                            <label class="checklist-item">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                <span class="checklist-text">Enable User Account Control (UAC)</span>
+                            </label>
+                            <label class="checklist-item">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                <span class="checklist-text">Review and minimize Administrators group membership</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="checklist-category">
+                        <h3>Password & Authentication</h3>
+                        <div class="checklist-items">
+                            <label class="checklist-item">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                <span class="checklist-text">Set minimum password length to 12+ characters</span>
+                            </label>
+                            <label class="checklist-item">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                <span class="checklist-text">Enable password complexity requirements</span>
+                            </label>
+                            <label class="checklist-item">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                <span class="checklist-text">Set password expiration to 90 days</span>
+                            </label>
+                            <label class="checklist-item">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                <span class="checklist-text">Configure account lockout after 5 failed attempts</span>
+                            </label>
+                            <label class="checklist-item">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                <span class="checklist-text">Change all default passwords</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="checklist-category">
+                        <h3>Network Security</h3>
+                        <div class="checklist-items">
+                            <label class="checklist-item">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                <span class="checklist-text">Enable Windows Firewall on all profiles</span>
+                            </label>
+                            <label class="checklist-item">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                <span class="checklist-text">Disable unnecessary network services (SMBv1, NetBIOS)</span>
+                            </label>
+                            <label class="checklist-item">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                <span class="checklist-text">Disable remote access services if not needed</span>
+                            </label>
+                            <label class="checklist-item">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                <span class="checklist-text">Configure firewall to block all inbound by default</span>
+                            </label>
+                            <label class="checklist-item">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                <span class="checklist-text">Review and remove unnecessary firewall rules</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="checklist-category">
+                        <h3>Logging & Monitoring</h3>
+                        <div class="checklist-items">
+                            <label class="checklist-item">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                <span class="checklist-text">Enable advanced audit policies</span>
+                            </label>
+                            <label class="checklist-item">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                <span class="checklist-text">Configure security log retention (minimum 90 days)</span>
+                            </label>
+                            <label class="checklist-item">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                <span class="checklist-text">Review security logs weekly</span>
+                            </label>
+                            <label class="checklist-item">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                <span class="checklist-text">Enable command line process auditing</span>
+                            </label>
+                            <label class="checklist-item">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                <span class="checklist-text">Monitor for Event IDs: 4625, 4720, 4726, 4740</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="checklist-category">
+                        <h3>Software & Applications</h3>
+                        <div class="checklist-items">
+                            <label class="checklist-item">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                <span class="checklist-text">Remove unauthorized or unnecessary software</span>
+                            </label>
+                            <label class="checklist-item">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                <span class="checklist-text">Update all installed software to latest versions</span>
+                            </label>
+                            <label class="checklist-item">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                <span class="checklist-text">Disable or remove media players with codec vulnerabilities</span>
+                            </label>
+                            <label class="checklist-item">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                <span class="checklist-text">Configure browsers for security (disable auto-save passwords)</span>
+                            </label>
+                            <label class="checklist-item">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                <span class="checklist-text">Remove potentially unwanted programs (PUPs)</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="checklist-category">
+                        <h3>File System & Permissions</h3>
+                        <div class="checklist-items">
+                            <label class="checklist-item">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                <span class="checklist-text">Remove unauthorized files and media</span>
+                            </label>
+                            <label class="checklist-item">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                <span class="checklist-text">Review file permissions on sensitive directories</span>
+                            </label>
+                            <label class="checklist-item">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                <span class="checklist-text">Scan for hidden files and folders</span>
+                            </label>
+                            <label class="checklist-item">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                <span class="checklist-text">Verify critical system file integrity</span>
+                            </label>
+                            <label class="checklist-item">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                <span class="checklist-text">Disable file sharing if not required</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="checklist-category">
+                        <h3>Services & Processes</h3>
+                        <div class="checklist-items">
+                            <label class="checklist-item">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                <span class="checklist-text">Disable unnecessary Windows services</span>
+                            </label>
+                            <label class="checklist-item">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                <span class="checklist-text">Review startup programs and disable unnecessary ones</span>
+                            </label>
+                            <label class="checklist-item">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                <span class="checklist-text">Scan for and remove malicious processes</span>
+                            </label>
+                            <label class="checklist-item">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                <span class="checklist-text">Verify all running services are legitimate</span>
+                            </label>
+                            <label class="checklist-item">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                <span class="checklist-text">Configure services to run with least privilege</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="progress-summary">
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" id="checklist-progress" style="width: 0%"></div>
+                    </div>
+                    <p class="progress-text">
+                        <span id="completed-count">0</span> of <span id="total-count">0</span> tasks completed
+                    </p>
+                </div>
+            </section>
+
+            <div class="guide-footer">
+                <div class="footer-links-guide">
+                    <a href="troubleshooting.html" class="footer-link">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                        </svg>
+                        <span>Need help? Check Troubleshooting Guide</span>
+                    </a>
+                    <a href="index.html#contact" class="footer-link">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                        <span>Questions? Contact me</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <span class="logo-bracket">&lt;</span>
+                        <span class="logo-text">ADVAITH</span>
+                        <span class="logo-bracket">&gt;</span>
+                    </div>
+                    <p class="footer-tagline">Building secure systems and protecting the digital world</p>
+                </div>
+
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Navigation</h4>
+                        <ul>
+                            <li><a href="index.html#home">Home</a></li>
+                            <li><a href="index.html#projects">Projects</a></li>
+                            <li><a href="index.html#journey">Journey</a></li>
+                            <li><a href="index.html#contact">Contact</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h4>Resources</h4>
+                        <ul>
+                            <li><a href="security-guide.html">Security Guide</a></li>
+                            <li><a href="troubleshooting.html">Troubleshooting</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h4>Connect</h4>
+                        <ul>
+                            <li><a href="https://github.com/advaithbanigandlapati-coder" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                            <li><a href="mailto:advaithaltacc@gmail.com">Email</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Advaith Banigandlapati. Built with passion for cybersecurity.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Troubleshooting | Advaith Banigandlapati</title>
+    <meta name="description" content="Common cybersecurity issues and solutions from competition experience.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%230ea5e9;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%2306b6d4;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='20' fill='url(%23grad)'/%3E%3Ctext x='50' y='70' font-family='system-ui' font-size='50' font-weight='700' text-anchor='middle' fill='white'%3EAB%3C/text%3E%3C/svg%3E">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <canvas id="background-canvas"></canvas>
+    
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-bracket">&lt;</span>
+                <span class="logo-text">ADVAITH</span>
+                <span class="logo-bracket">&gt;</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html#home" class="nav-link">Home</a></li>
+                <li><a href="index.html#projects" class="nav-link">Projects</a></li>
+                <li><a href="index.html#skills" class="nav-link">Skills</a></li>
+                <li><a href="index.html#journey" class="nav-link">Journey</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+                <li><a href="security-guide.html" class="nav-link nav-link-accent">Security Guide</a></li>
+            </ul>
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="5"/>
+                    <line x1="12" y1="1" x2="12" y2="3"/>
+                    <line x1="12" y1="21" x2="12" y2="23"/>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                    <line x1="1" y1="12" x2="3" y2="12"/>
+                    <line x1="21" y1="12" x2="23" y2="12"/>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                </svg>
+                <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                </svg>
+            </button>
+            <button class="mobile-menu-toggle" id="mobile-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <section class="page-hero">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="9 18 15 12 9 6"/>
+                </svg>
+                <span>Troubleshooting</span>
+            </div>
+            <h1 class="page-title">
+                <span class="gradient-text">Troubleshooting</span> Guide
+            </h1>
+            <p class="page-subtitle">
+                Common security issues and their solutions. Learn from mistakes I've encountered during competitions 
+                and how to fix them quickly.
+            </p>
+        </div>
+    </section>
+
+    <main class="guide-content">
+        <div class="container-narrow">
+            <section class="guide-section">
+                <h2>Common Security Mistakes</h2>
+                <p class="section-intro">These are frequent errors that can cost you points in competitions or leave your system vulnerable.</p>
+
+                <div class="troubleshooting-item">
+                    <div class="trouble-header">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="12" y1="8" x2="12" y2="12"/>
+                            <line x1="12" y1="16" x2="12.01" y2="16"/>
+                        </svg>
+                        <h3>BitLocker Not Starting After Enabling</h3>
+                    </div>
+                    <div class="trouble-problem">
+                        <h4>Problem</h4>
+                        <p>BitLocker wizard completes but encryption never begins, or status shows "Waiting for Activation"</p>
+                    </div>
+                    <div class="trouble-solution">
+                        <h4>Solutions</h4>
+                        <ol class="numbered-list">
+                            <li>
+                                <strong>Verify TPM is enabled and initialized</strong>
+                                <div class="code-block">
+                                    <div class="code-header"><span>PowerShell (Admin)</span></div>
+                                    <pre><code>Get-Tpm
+# Check that TpmPresent and TpmReady are both True</code></pre>
+                                </div>
+                            </li>
+                            <li>
+                                <strong>Ensure sufficient free space</strong>
+                                <p>BitLocker requires at least 5% free space on the drive being encrypted</p>
+                            </li>
+                            <li>
+                                <strong>Check if system partition meets requirements</strong>
+                                <p>System drive must have a separate system partition (usually 100-500 MB)</p>
+                            </li>
+                            <li>
+                                <strong>Resume encryption manually</strong>
+                                <div class="code-block">
+                                    <div class="code-header"><span>PowerShell (Admin)</span></div>
+                                    <pre><code>Resume-BitLocker -MountPoint "C:"</code></pre>
+                                </div>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="troubleshooting-item">
+                    <div class="trouble-header">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="12" y1="8" x2="12" y2="12"/>
+                            <line x1="12" y1="16" x2="12.01" y2="16"/>
+                        </svg>
+                        <h3>Password Policy Not Applied to Existing Users</h3>
+                    </div>
+                    <div class="trouble-problem">
+                        <h4>Problem</h4>
+                        <p>Changed password policy settings but existing users still have weak passwords</p>
+                    </div>
+                    <div class="trouble-solution">
+                        <h4>Solution</h4>
+                        <p>Password policies only affect new passwords or password changes. Force users to change passwords:</p>
+                        <div class="code-block">
+                            <div class="code-header"><span>PowerShell (Admin)</span></div>
+                            <pre><code># Force single user to change password at next login
+Set-LocalUser -Name "username" -PasswordNeverExpires $false
+
+# Force all users except yourself
+Get-LocalUser | Where-Object {$_.Name -ne "YourUsername"} | Set-LocalUser -PasswordNeverExpires $false</code></pre>
+                        </div>
+                        <div class="warning-box">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                                <line x1="12" y1="9" x2="12" y2="13"/>
+                                <line x1="12" y1="17" x2="12.01" y2="17"/>
+                            </svg>
+                            <p><strong>Important:</strong> Change your own password first to meet requirements before forcing others!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="troubleshooting-item">
+                    <div class="trouble-header">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="12" y1="8" x2="12" y2="12"/>
+                            <line x1="12" y1="16" x2="12.01" y2="16"/>
+                        </svg>
+                        <h3>Audit Logs Not Recording Events</h3>
+                    </div>
+                    <div class="trouble-problem">
+                        <h4>Problem</h4>
+                        <p>Enabled audit policies but no events appear in Security log</p>
+                    </div>
+                    <div class="trouble-solution">
+                        <h4>Solutions</h4>
+                        <ol class="numbered-list">
+                            <li>
+                                <strong>Verify audit policy is actually enabled</strong>
+                                <div class="code-block">
+                                    <div class="code-header"><span>Command Prompt (Admin)</span></div>
+                                    <pre><code>auditpol /get /category:*</code></pre>
+                                </div>
+                            </li>
+                            <li>
+                                <strong>Check Security log size and retention</strong>
+                                <p>Open Event Viewer → Right-click Security log → Properties</p>
+                                <p>Ensure "Maximum log size" is at least 100 MB and retention is configured</p>
+                            </li>
+                            <li>
+                                <strong>Force a test event</strong>
+                                <p>Try logging in with wrong password to generate Event ID 4625</p>
+                            </li>
+                            <li>
+                                <strong>Restart after policy changes</strong>
+                                <p>Some audit policies require restart to take effect</p>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="troubleshooting-item">
+                    <div class="trouble-header">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="12" y1="8" x2="12" y2="12"/>
+                            <line x1="12" y1="16" x2="12.01" y2="16"/>
+                        </svg>
+                        <h3>Firewall Blocking Legitimate Applications</h3>
+                    </div>
+                    <div class="trouble-problem">
+                        <h4>Problem</h4>
+                        <p>After enabling firewall, certain applications or services stop working</p>
+                    </div>
+                    <div class="trouble-solution">
+                        <h4>Solutions</h4>
+                        <ol class="numbered-list">
+                            <li>
+                                <strong>Check firewall logs</strong>
+                                <p>Enable firewall logging: Firewall Advanced Settings → Right-click profile → Properties → Logging</p>
+                            </li>
+                            <li>
+                                <strong>Create application exception</strong>
+                                <p>Windows Firewall → Allow an app → Add the blocked application</p>
+                            </li>
+                            <li>
+                                <strong>Check for conflicting rules</strong>
+                                <p>Review both inbound and outbound rules for conflicts or duplicates</p>
+                            </li>
+                            <li>
+                                <strong>Test with firewall temporarily disabled</strong>
+                                <p>Disable firewall briefly to confirm it's the cause, then re-enable and create proper exception</p>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="troubleshooting-item">
+                    <div class="trouble-header">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="12" y1="8" x2="12" y2="12"/>
+                            <line x1="12" y1="16" x2="12.01" y2="16"/>
+                        </svg>
+                        <h3>Cannot Disable Guest Account</h3>
+                    </div>
+                    <div class="trouble-problem">
+                        <h4>Problem</h4>
+                        <p>Guest account keeps getting re-enabled or shows as enabled despite disabling it</p>
+                    </div>
+                    <div class="trouble-solution">
+                        <h4>Solutions</h4>
+                        <ol class="numbered-list">
+                            <li>
+                                <strong>Disable via PowerShell</strong>
+                                <div class="code-block">
+                                    <div class="code-header"><span>PowerShell (Admin)</span></div>
+                                    <pre><code>Disable-LocalUser -Name "Guest"
+Get-LocalUser -Name "Guest" | Select Name, Enabled</code></pre>
+                                </div>
+                            </li>
+                            <li>
+                                <strong>Disable via Local Security Policy</strong>
+                                <p>secpol.msc → Local Policies → Security Options → Accounts: Guest account status → Disabled</p>
+                            </li>
+                            <li>
+                                <strong>Check for Group Policy Override</strong>
+                                <p>Run <code class="inline-code">gpresult /r</code> to check if domain policy is re-enabling it</p>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="troubleshooting-item">
+                    <div class="trouble-header">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="12" y1="8" x2="12" y2="12"/>
+                            <line x1="12" y1="16" x2="12.01" y2="16"/>
+                        </svg>
+                        <h3>Account Lockout Too Aggressive</h3>
+                    </div>
+                    <div class="trouble-problem">
+                        <h4>Problem</h4>
+                        <p>Users getting locked out too frequently, even with legitimate login attempts</p>
+                    </div>
+                    <div class="trouble-solution">
+                        <h4>Solutions</h4>
+                        <ol class="numbered-list">
+                            <li>
+                                <strong>Adjust lockout threshold</strong>
+                                <p>5 attempts is recommended balance between security and usability</p>
+                            </li>
+                            <li>
+                                <strong>Set reasonable lockout duration</strong>
+                                <p>30 minutes allows recovery without admin intervention</p>
+                            </li>
+                            <li>
+                                <strong>Check for password sync issues</strong>
+                                <p>Saved credentials in browsers or apps may be trying old passwords</p>
+                            </li>
+                            <li>
+                                <strong>Review Event ID 4740</strong>
+                                <p>Identify which machine/process is causing failed attempts</p>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </section>
+
+            <section class="guide-section">
+                <h2>Windows Update Issues</h2>
+                
+                <div class="troubleshooting-item">
+                    <div class="trouble-header">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="12" y1="8" x2="12" y2="12"/>
+                            <line x1="12" y1="16" x2="12.01" y2="16"/>
+                        </svg>
+                        <h3>Windows Update Stuck or Failing</h3>
+                    </div>
+                    <div class="trouble-solution">
+                        <h4>Solutions</h4>
+                        <ol class="numbered-list">
+                            <li>
+                                <strong>Run Windows Update Troubleshooter</strong>
+                                <p>Settings → Update & Security → Troubleshoot → Windows Update</p>
+                            </li>
+                            <li>
+                                <strong>Reset Windows Update components</strong>
+                                <div class="code-block">
+                                    <div class="code-header"><span>Command Prompt (Admin)</span></div>
+                                    <pre><code>net stop wuauserv
+net stop cryptSvc
+net stop bits
+net stop msiserver
+ren C:\Windows\SoftwareDistribution SoftwareDistribution.old
+ren C:\Windows\System32\catroot2 catroot2.old
+net start wuauserv
+net start cryptSvc
+net start bits
+net start msiserver</code></pre>
+                                </div>
+                            </li>
+                            <li>
+                                <strong>Check disk space</strong>
+                                <p>Ensure C: drive has at least 10 GB free space</p>
+                            </li>
+                            <li>
+                                <strong>Manually download and install updates</strong>
+                                <p>Visit Microsoft Update Catalog if automatic updates fail</p>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </section>
+
+            <section class="guide-section">
+                <h2>Network & Connectivity Issues</h2>
+                
+                <div class="troubleshooting-item">
+                    <div class="trouble-header">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="12" y1="8" x2="12" y2="12"/>
+                            <line x1="12" y1="16" x2="12.01" y2="16"/>
+                        </svg>
+                        <h3>Network Connection Lost After Security Changes</h3>
+                    </div>
+                    <div class="trouble-solution">
+                        <h4>Solutions</h4>
+                        <ol class="numbered-list">
+                            <li>
+                                <strong>Check firewall rules</strong>
+                                <p>Ensure DHCP Client (UDP 67, 68) and DNS (TCP/UDP 53) are allowed</p>
+                            </li>
+                            <li>
+                                <strong>Verify network services are running</strong>
+                                <div class="code-block">
+                                    <div class="code-header"><span>PowerShell (Admin)</span></div>
+                                    <pre><code>Get-Service -Name Dhcp, Dnscache, LanmanWorkstation | Select Name, Status</code></pre>
+                                </div>
+                            </li>
+                            <li>
+                                <strong>Check if network adapter is disabled</strong>
+                                <p>Device Manager → Network adapters → Ensure adapter is enabled</p>
+                            </li>
+                            <li>
+                                <strong>Reset TCP/IP stack</strong>
+                                <div class="code-block">
+                                    <div class="code-header"><span>Command Prompt (Admin)</span></div>
+                                    <pre><code>netsh int ip reset
+netsh winsock reset
+ipconfig /flushdns
+ipconfig /renew</code></pre>
+                                </div>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </section>
+
+            <section class="guide-section">
+                <h2>Performance Issues After Hardening</h2>
+                
+                <div class="troubleshooting-item">
+                    <div class="trouble-header">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="12" y1="8" x2="12" y2="12"/>
+                            <line x1="12" y1="16" x2="12.01" y2="16"/>
+                        </svg>
+                        <h3>System Running Slow After Security Configuration</h3>
+                    </div>
+                    <div class="trouble-solution">
+                        <h4>Common Causes & Solutions</h4>
+                        <ol class="numbered-list">
+                            <li>
+                                <strong>BitLocker encryption in progress</strong>
+                                <p>Check encryption status - system will be slower until encryption completes</p>
+                                <div class="code-block">
+                                    <div class="code-header"><span>PowerShell</span></div>
+                                    <pre><code>Get-BitLockerVolume | Select MountPoint, EncryptionPercentage</code></pre>
+                                </div>
+                            </li>
+                            <li>
+                                <strong>Windows Defender full scan running</strong>
+                                <p>Schedule scans during off-hours: Windows Security → Virus & threat protection → Scan options</p>
+                            </li>
+                            <li>
+                                <strong>Excessive audit logging</strong>
+                                <p>Reduce logging to only essential categories if performance is critical</p>
+                            </li>
+                            <li>
+                                <strong>Check for malware</strong>
+                                <p>Run full antivirus scan - sometimes slowness indicates infection</p>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </section>
+
+            <section class="guide-section">
+                <h2>Quick Diagnostic Commands</h2>
+                <p class="section-intro">Essential commands for troubleshooting security configurations</p>
+
+                <div class="diagnostic-grid">
+                    <div class="diagnostic-card">
+                        <h4>Check Security Status</h4>
+                        <div class="code-block">
+                            <div class="code-header"><span>PowerShell</span></div>
+                            <pre><code># Get security center status
+Get-MpComputerStatus
+
+# Check firewall status
+Get-NetFirewallProfile | Select Name, Enabled
+
+# BitLocker status
+Get-BitLockerVolume
+
+# TPM status
+Get-Tpm</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="diagnostic-card">
+                        <h4>User Account Information</h4>
+                        <div class="code-block">
+                            <div class="code-header"><span>PowerShell</span></div>
+                            <pre><code># List all local users
+Get-LocalUser | Select Name, Enabled, PasswordRequired
+
+# Check user group membership
+Get-LocalGroupMember -Group "Administrators"
+
+# View locked accounts
+Get-LocalUser | Where-Object {$_.Locked -eq $true}</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="diagnostic-card">
+                        <h4>Audit Policy Status</h4>
+                        <div class="code-block">
+                            <div class="code-header"><span>Command Prompt</span></div>
+                            <pre><code># View all audit policies
+auditpol /get /category:*
+
+# Check specific category
+auditpol /get /category:"Logon/Logoff"</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="diagnostic-card">
+                        <h4>System & Service Info</h4>
+                        <div class="code-block">
+                            <div class="code-header"><span>PowerShell</span></div>
+                            <pre><code># Running services
+Get-Service | Where-Object {$_.Status -eq "Running"}
+
+# Startup programs
+Get-CimInstance Win32_StartupCommand
+
+# Installed software
+Get-ItemProperty HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\*</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="guide-section">
+                <h2>Competition-Specific Tips</h2>
+                
+                <div class="info-box">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="12" y1="16" x2="12" y2="12"/>
+                        <line x1="12" y1="8" x2="12.01" y2="8"/>
+                    </svg>
+                    <div>
+                        <h4>Time Management</h4>
+                        <ul class="check-list">
+                            <li>Start with quick wins: disable Guest, enable firewall, basic password policy</li>
+                            <li>Don't spend too much time on one issue - move on and come back later</li>
+                            <li>Keep track of what you've already done using a checklist</li>
+                            <li>Test each change to ensure it doesn't break functionality</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="12" y1="16" x2="12" y2="12"/>
+                        <line x1="12" y1="8" x2="12.01" y2="8"/>
+                    </svg>
+                    <div>
+                        <h4>Common Pitfalls to Avoid</h4>
+                        <ul class="check-list">
+                            <li>Don't lock yourself out by changing your own password incorrectly</li>
+                            <li>Don't disable services required for scoring (varies by scenario)</li>
+                            <li>Don't forget to actually start BitLocker encryption (not just set it up)</li>
+                            <li>Don't skip README files - they contain critical information</li>
+                            <li>Don't assume default settings are secure - verify everything</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <div class="guide-footer">
+                <div class="footer-links-guide">
+                    <a href="security-guide.html" class="footer-link">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                        </svg>
+                        <span>Back to Security Guide</span>
+                    </a>
+                    <a href="index.html#contact" class="footer-link">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                        <span>Need more help? Contact me</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <span class="logo-bracket">&lt;</span>
+                        <span class="logo-text">ADVAITH</span>
+                        <span class="logo-bracket">&gt;</span>
+                    </div>
+                    <p class="footer-tagline">Building secure systems and protecting the digital world</p>
+                </div>
+
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Navigation</h4>
+                        <ul>
+                            <li><a href="index.html#home">Home</a></li>
+                            <li><a href="index.html#projects">Projects</a></li>
+                            <li><a href="index.html#journey">Journey</a></li>
+                            <li><a href="index.html#contact">Contact</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h4>Resources</h4>
+                        <ul>
+                            <li><a href="security-guide.html">Security Guide</a></li>
+                            <li><a href="troubleshooting.html">Troubleshooting</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h4>Connect</h4>
+                        <ul>
+                            <li><a href="https://github.com/advaithbanigandlapati-coder" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                            <li><a href="mailto:advaithaltacc@gmail.com">Email</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Advaith Banigandlapati. Built with passion for cybersecurity.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
