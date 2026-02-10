@@ -1078,12 +1078,6 @@ code, pre {
     line-height: 1.6;
 }
 
-/* ===== PREMIUM PROJECTS GRID ===== */
-.projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-    gap: var(--spacing-xl);
-}
 
 .project-card {
     background: var(--bg-primary);
